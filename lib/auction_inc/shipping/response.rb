@@ -13,15 +13,15 @@ module AuctionInc
       end
 
       def has_error?
-        self.body.error.present? || (self.body.item_ship_rate.present? && self.body.item_ship_rate.has_errors?)
+        self.body.errors.any? || (self.body.item_ship_rate.present? && self.body.item_ship_rate.has_errors?)
       end
       alias_method :has_errors?, :has_error?
 
       def error
-        if self.body.error.present?
-          self.body.error 
+        if self.body.errors.any?
+          self.body.errors.first
         elsif self.body.item_ship_rate.present? && self.body.item_ship_rate.has_errors?
-          self.body.item_ship_rate.error
+          self.body.item_ship_rate.errors.first
         else
           nil
         end

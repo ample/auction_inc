@@ -4,11 +4,13 @@
     <AccountId>your access key</AccountId>
   </Header>
   <Body>
-    <Error>
-      <Code>560</Code>
-      <Message>Invalid Account Id</Message>
-      <Detail>USPPM:Item weight exceeds limit</Detail>
-      <Severity>CRITICAL</Severity>
-    </Error>
+    <ErrorList>
+      <Error>
+        <Code>560</Code>
+        <Message>Invalid Account Id</Message>
+        <Detail>USPPM:Item weight exceeds limit</Detail>
+        <Severity>CRITICAL</Severity>
+      </Error>
+    </ErrorList>
   </Body>
 </Envelope>

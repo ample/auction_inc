@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe AuctionInc::Shipping::Error do
   let(:xml_string) { File.read(remote_fixture_file('auction_inc_type_1_error_response.xml')) }
-  let(:error) { AuctionInc::Shipping::Envelope.from_xml(xml_string).body.error }
+  let(:error) { AuctionInc::Shipping::Envelope.from_xml(xml_string).body.errors.first }
 
   AuctionInc::Shipping::Error::SEVERITIES.each do |severity|
     describe "##{severity.to_s.downcase}?" do

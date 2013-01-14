@@ -55,7 +55,7 @@ describe AuctionInc::Shipping::Response do
 
       it "should include be error inside <Body/>" do
         response = AuctionInc::Shipping::Response.new(xml_string)
-        response.error.should == response.body.error
+        response.error.should == response.body.errors.first
       end
     end
 
