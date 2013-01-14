@@ -1,7 +1,33 @@
 = auction_inc
 
-Description goes here.
+== GetItemShipRateSS (Single Seller) Example
 
+    a = AuctionInc::Shipping::Ss.new
+    a.license_key = YOUR_LICENSE_KEY
+    a.destination_address = AuctionInc::Shipping::DestinationAddress.new 
+      residential_delivery: 'true', 
+      country_code: 'US', 
+      state_or_province_code: 'OH', 
+      postal_code: '45202'
+    
+    i = AuctionInc::Shipping::Item.new
+    i.calc_method = AuctionInc::Shipping::CalcMethod.new
+      code: 'C'
+    
+    ccp = AuctionInc::Shipping::CarrierCalcProps.new
+      weight: 10,
+      length: 10,
+      height: 10,
+      width:  10,
+      declared_value: 100,
+      pack_method: 'S'
+      
+    i.calc_method.carrier_calc_props = ccp
+    a.items = [i]
+    
+    r = a.make_request
+    r.ship_rates.first.rate # => 16.95
+    
 == Note on Patches/Pull Requests
  
 * Fork the project.
@@ -14,4 +40,4 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2010 pjkelly. See LICENSE for details.
+Copyright (c) 2010–2013 pjkelly & Bobby Uhlenbrock. See LICENSE for details.
