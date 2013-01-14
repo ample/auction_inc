@@ -3,6 +3,8 @@ $:.unshift(File.dirname(__FILE__))
 require 'rubygems'
 require 'roxml'
 
+require 'active_support/all'
+
 require 'auction_inc/shipping/node'
 
 # Nodes without dependencies
